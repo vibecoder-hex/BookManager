@@ -2,13 +2,13 @@
 </script>
 
 <template>
-  <nav class="navbar" role="navigation">
-    <RouterLink class="navbar-item is-size-3" to="/">BookManager</RouterLink>
-      <RouterLink to="/" class="navbar-item">Создать книгу</RouterLink>
-      <RouterLink to="/books" class="navbar-item">Список книг</RouterLink>
-  </nav>
+    <nav class="navbar" role="navigation">
+        <RouterLink class="navbar-item is-size-3" to="/">BookManager</RouterLink>
+        <RouterLink to="/" class="navbar-item">Создать книгу</RouterLink>
+        <RouterLink to="/books" class="navbar-item">Список книг</RouterLink>
+    </nav>
     <main>
-        <RouterView/>
+       <RouterView/>
     </main>
 </template>
 

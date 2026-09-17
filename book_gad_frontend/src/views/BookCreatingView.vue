@@ -3,7 +3,6 @@
 </script>
 
 <template>
-    <h1>Добавить книгу</h1>
     <BookCreatingForm />
 </template>
 

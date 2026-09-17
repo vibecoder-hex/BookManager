@@ -24,15 +24,6 @@ public class BookManagerController : ControllerBase
         return Ok(bookList);
     }
 
-    [HttpGet("{bookName}")]
-    public async Task<IActionResult> GetById(string bookName)
-    {
-        var book = await _bookManagerRepository.GetBook(bookName);
-        if (book == null)
-            return NotFound(new { Error = $"Book with name {bookName} not found" });
-        return Ok(book);
-    }
-
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BookCreatingFormDto dto)
     {
@@ -45,27 +36,27 @@ public class BookManagerController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> Delete(string bookName)
+    public async Task<IActionResult> Delete([FromQuery] string title)
     {
-        var existingBook = await _bookManagerRepository.GetBook(bookName);
+        var existingBook = await _bookManagerRepository.GetBook(title);
         if (existingBook == null)
-            return BadRequest(new { Error = $"Book with title {bookName} not found" });
-        await _bookManagerRepository.DeleteBook(bookName);
+            return BadRequest(new { Error = $"Book with title {title} not found" });
+        await _bookManagerRepository.DeleteBook(title);
         return Ok(new { Message = $"Book deleted successfully" });
     }
 
-    [HttpPost("FullText/{searchString}")]
-    public async Task<IActionResult> SearchByFullText(string searchString)
+    [HttpGet("FullText")]
+    public async Task<IActionResult> SearchByFullText([FromQuery] string searchQuery)
     {
-        if (!string.IsNullOrEmpty(searchString))
+        if (!string.IsNullOrEmpty(searchQuery))
         {
-            var bookList = await _bookManagerRepository.GetBooksByFullText(searchString);
+            var bookList = await _bookManagerRepository.GetBooksByFullText(searchQuery);
             return Ok(bookList);
         }
         return BadRequest(new { Error = "Search string in empty" });
     }
 
-    [HttpPost("Regex")]
+    [HttpGet("Regex")]
     public async Task<IActionResult> SearchByRegex([FromQuery] string regexString)
     {
         if (!string.IsNullOrEmpty(regexString))
