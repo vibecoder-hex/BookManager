@@ -1,3 +1,11 @@
 <Solution>
+  <Project Path="BookManagerGUI/BookManagerGUI.Android/BookManagerGUI.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="BookManagerGUI/BookManagerGUI.Desktop/BookManagerGUI.Desktop.csproj" />
+  <Project Path="BookManagerGUI/BookManagerGUI.iOS/BookManagerGUI.iOS.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="BookManagerGUI/BookManagerGUI/BookManagerGUI.csproj" />
   <Project Path="BooksGAD/BooksGAD.csproj" />
 </Solution>
