@@ -14,8 +14,4 @@
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\BookManagerGUI\BookManagerGUI.csproj"/>
-    </ItemGroup>
 </Project>
